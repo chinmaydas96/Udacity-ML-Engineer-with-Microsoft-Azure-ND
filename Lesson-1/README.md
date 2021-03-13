@@ -56,3 +56,49 @@ ___
 * In the project at the end of this course, you'll have the opportunity to create and optimize an ML pipeline. You'll do this both using HyperDrive and also Automated ML, so that you can compare the results of the two methods.
 
 ---
+---
+---
+
+### Why Do Machine Learning in the Cloud
+
+Although you can certainly do machine learning locally on your own machine, but this will involve limitations imposed by your machine's resources. In contrast, the cloud provides a variety of platform tools that are constantly being developed and improved by some of the best engineers in the world. In the Azure cloud, these include:
+
+* **Data lakes**, which provide essentially infinite storage that is also very secure.
+
+* **Machine Learning Studio**, which makes it easy to build a full, end-to-end ML solution, leveraging great ready-made resources like open datasets.
+
+* **DevOps build systems**, allowing you to integrate DevOps pipelines with your machine learning workflows.
+
+* **Serverless technology**, in which Azure runs the server and handles the provisioning of machine resources for you automatically, allowing you to more easily solve complex orchestration problems.
+
+
+---
+
+### When to Do ML in the Cloud
+
+
+Most of the time the cloud is your best option for ML. Some reasons to favor cloud computing include:
+
+* **Data governance :** Cloud solutions offer additional security to help prevent problems like data breaches and piracy.
+Better ability to leverage new services. A cloud-native approach allows you to leverage new services as they're developed. You're betting on the future, knowing that the cloud platform will get a constant set of new features (in contrast to you needing to build those features yourself).
+Even so, there are a few edge cases in which using the cloud may not be the best route. These include:
+
+* **Legal/government requirements :** If your company handles sensitive data, such as medical records or government files, it may not be legally possible to move to the cloud.
+
+* **Legacy applications :** If you have a legacy application that is currently working, but that is unlikely to be updated, it may not make sense to take the risk of moving it to the cloud.
+
+* **Specialized HPC :** In some cases, you may already have a specialized and very expensive High Performance Computing (HPC) cluster. In such a case, it may be more cost effective to keep what you have and only use the cloud for some parts of your workflow.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
