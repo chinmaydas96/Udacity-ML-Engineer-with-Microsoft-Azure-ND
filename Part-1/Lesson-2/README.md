@@ -14,19 +14,19 @@ ___
 
 # Intro to Azure ML Platform
 
-![](screen2.png)
+![1](screen2.png)
 
 ---
 
-![](screen3.png)
+![2](screen3.png)
 
 ---
 
-![](screen4.png)
+![3](screen4.png)
 
 ---
 
-![](screen5.png)
+![4](screen5.png)
 
 
 ---
