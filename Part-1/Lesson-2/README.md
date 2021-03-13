@@ -76,7 +76,15 @@ Managing compute resources effectively involves several main components:
 
 
 
+![1](screen6.png)
 
+---
+
+![2](screen7.png)
+
+---
+
+![3](screen8.png)
 
 
 
