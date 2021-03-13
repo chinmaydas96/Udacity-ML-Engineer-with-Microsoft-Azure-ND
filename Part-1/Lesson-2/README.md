@@ -1,8 +1,7 @@
-# Lesson Overview
-
 ![](screen1.png)
 
 ---
+# Lesson Overview
 
 * **The Azure ML Platform :** We'll talk about the core features of the Microsoft Azure ML platform and how they enable us to be more productive as data scientists or machine learning engineers—including how elastic resources give us the power to do ML at scale.
 
