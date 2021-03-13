@@ -1,3 +1,8 @@
+![](screen1.png)
+
+___
+
+
 # Course Overview
 
 ## Lesson 1: Introduction to Azure Machine Learning
@@ -21,7 +26,7 @@
 ---
 
 ## Lesson 3: Datastores and Datasets
-* Datastores and Datasets. Datastores and Datasets are a critical component of cloud computing. We'll learn how Azure allows you to easily integrate third party datasets and open datasets into our ML pipeline to quickly develop working solutions.
+* **Datastores and Datasets :** Datastores and Datasets are a critical component of cloud computing. We'll learn how Azure allows you to easily integrate third party datasets and open datasets into our ML pipeline to quickly develop working solutions.
 
 ---
 
@@ -51,4 +56,3 @@
 * In the project at the end of this course, you'll have the opportunity to create and optimize an ML pipeline. You'll do this both using HyperDrive and also Automated ML, so that you can compare the results of the two methods.
 
 ---
-![](screen1.png)
