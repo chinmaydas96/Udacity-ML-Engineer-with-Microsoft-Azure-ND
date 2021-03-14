@@ -179,6 +179,12 @@ This is all about protecting data from interception. Are you using a VPN to limi
 
 Data encryption itself encompasses both data at rest and in transit. Obviously, you want to use secure protocols to prevent others from accessing the data. But by making sure the data is encrypted at all times, you ensure that even if the data is somehow breached, it still cannot be used.
 
+---
+
+![1](screen9.png)
+
+---
+
 ## Azure Encryption Services
 
 To help you ensure your data is secure, Azure has several encryption services that that are deeply integrated with the platform:
