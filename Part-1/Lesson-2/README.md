@@ -87,6 +87,74 @@ Managing compute resources effectively involves several main components:
 ![3](screen8.png)
 
 
+---
+
+# Choosing the Compute Resource for Your Needs
+
+* When choosing the compute resources for your needs, some key factors to consider are GPU vs CPU, cluster size, VM size, and dedicated vs low-priority instances. Let's have a look at the factors involved in each of these choices.
+
+
+### CPU vs GPU
+
+* Characteristics of CPUs:
+
+	* Less expensive
+	* Lower level of concurrency (a CPU isn't designed for parallel computing)
+	* Can be a lot slower in training deep learning models
+	* If time really isn't a critical factor, it could be a good option to save
+
+* Characteristics of GPUs
+
+	* More expensive
+	* Higher level of concurrency (GPUs are designed for parallel computing)
+	* Optimal for deep learning
+	* Used in both inference and training; the power level for these may be different
+
+
+### Cluster Size
+
+* The primary consideration with cluster size is response time:
+
+	* If you have a cluster that starts at zero nodes, that means it will have to spin up a node when it is needed for a task, which could lead to slower response times (but will save on costs).
+
+	* A larger starting cluster size will result in better responsiveness, but will also be more expensive.
+	In sum, if you have more time, but less money, you may want to go with a smaller cluster size. Conversely, if you have less time and more money, you may want to go with a larger cluster size.
+
+
+### VM Size
+
+* The "size" of a VM can vary in terms of a number of features, including:
+
+	* RAM
+	* Disk size
+	* Number of cores
+	* Clock speed
+
+* Getting a VM with more RAM, larger disk size, a greater number of cores, and higher clock speed, will result in better performance, but will also be more expensive. The choice depends on the training and inference needs of the problem you're trying to solve, as well as your time and budgetary constraints.
+
+### Dedicated Instances vs Low-Priority Instances
+
+* When an instance is low-priority this means it is interruptible—essentially, Microsoft Azure can take those resources and assign them to another task, thus interrupting a job.
+
+* When an instance is dedicated, or non-interruptible, this means that the job will never be terminated without your permission.
+
+* This is another consideration of time vs money, since interruptible instances are less expensive than dedicated ones.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
