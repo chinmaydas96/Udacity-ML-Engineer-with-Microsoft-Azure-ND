@@ -53,11 +53,17 @@
 
 If you have secret or sensitive data that you need to keep protected, data governance becomes a concern.
 
-#### Do-It-Yourself (DIY) interface to data storage types. You will have to write a bunch of extra code to connect different storage types (such as SQL or Databricks).
+#### Do-It-Yourself (DIY) interface to data storage types :
 
-#### Hardware constraints. Your machine's resources (e.g., CPU, disk IO, storage) are limited.
+You will have to write a bunch of extra code to connect different storage types (such as SQL or Databricks).
 
-#### Third party integration. If you want to use an off-the-shelf, third party tool, this could pose integration problems—and you will have to handle the integration problems on your own.
+#### Hardware constraints : 
+
+Your machine's resources (e.g., CPU, disk IO, storage) are limited.
+
+#### Third party integration : 
+
+If you want to use an off-the-shelf, third party tool, this could pose integration problems—and you will have to handle the integration problems on your own.
 
 ### The Solution: The Azure Cloud and Datastores
 
