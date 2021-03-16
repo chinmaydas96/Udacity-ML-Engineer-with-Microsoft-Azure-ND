@@ -45,12 +45,12 @@ Finally, we'll talk about how we can leverage Azure's Application Insights infra
 
 * The Designer is a no code/low code interface that allows you to organize resources using a simple drag-and-drop interface. You can use the Designer to build, test, and deploy your ML models. The Designer can be used to organize and configure a variety of resources, including:
 
-* Pipelines
-* Datasets
-* Compute resources
-* Registered models
-* Published pipelines
-* Real-time endpoints
+	* Pipelines
+	* Datasets
+	* Compute resources
+	* Registered models
+	* Published pipelines
+	* Real-time endpoints
 
 
 ---
@@ -100,13 +100,21 @@ Finally, we'll talk about how we can leverage Azure's Application Insights infra
 
 * An AzureML pipeline has several main components:
 
-#### Data preparation. This involves steps like importing, validating, cleaning, wrangling (or "munging"), transforming, normalizing, and staging your data. This step tends to be a large proportion of the work in most ML projects.
+#### Data preparation :
 
-#### Training configuration. A typical training configuration includes steps like parameterization, file paths, logging, and reporting.
+This involves steps like importing, validating, cleaning, wrangling (or "munging"), transforming, normalizing, and staging your data. This step tends to be a large proportion of the work in most ML projects.
 
-#### Training validation. Training validation involves repeatedly running through your experiment, picking different hardware, compute resources, doing distributed computing, and also monitoring your progress.
+#### Training configuration :
 
-#### Model deployment. The final step is to deploy the model. This typically involves actions like versioning, scaling, provisioning, and configuring access control.
+A typical training configuration includes steps like parameterization, file paths, logging, and reporting.
+
+#### Training validation :
+
+Training validation involves repeatedly running through your experiment, picking different hardware, compute resources, doing distributed computing, and also monitoring your progress.
+
+#### Model deployment :
+
+The final step is to deploy the model. This typically involves actions like versioning, scaling, provisioning, and configuring access control.
 
 
 ## The Azure Machine Learning Workspace
