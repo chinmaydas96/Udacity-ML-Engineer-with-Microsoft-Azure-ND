@@ -189,8 +189,11 @@ The final step is to deploy the model. This typically involves actions like vers
 	You may train a new mode and put it into production, but then find it doesn't fit with the data structure of what your request is expecting—a situation like this will generate an exception, which you can then address.
 
 
+---
 
+![1](screen11.png)
 
+---
 
 
 
