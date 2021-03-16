@@ -131,10 +131,36 @@ The final step is to deploy the model. This typically involves actions like vers
 * One key idea to understand is that this system supports an MLOps approach by providing a traceable data lineage—meaning, you have visibility into the process that the data has undergone, including the origin of the data and the root cause of any errors that arise.
 
 
+---
 
 
+# Hyperparameters in Experiments
+
+![1](screen9.png)
 
 
+---
+
+![1](screen10.png)
+
+---
+
+
+# Key Tasks for Using Hyperparameters in Experiments
+
+* Using hyperparameters in experiments involves the following key tasks:
+
+	* Define the parameter search space.
+	
+	* Optimize a chosen metric.
+	
+	* Specify termination—meaning, define the criteria that say when the process should be terminated.
+	
+	* Allocate resources, such as selecting the compute clusters you'll use.
+	
+	* Launch an experiment using an Azure pipeline.
+	
+	* Visualize the results to see what you actually created.
 
 
 
