@@ -163,9 +163,30 @@ The final step is to deploy the model. This typically involves actions like vers
 	* Visualize the results to see what you actually created.
 
 
+---
 
+# Monitoring Models with Application Insights
 
+* Once you have deployed an ML model, you need to monitor the model's performance—which you can do using Microsoft Azure's Application Insights. Application Insights is an Application Performance Management (APM) service that is available as a feature of Azure Monitor.
 
+### Metrics for Monitoring Models
+
+* There are a variety of metrics you can use when monitoring your ML models with Application Insights. Some examples are:
+
+	* Request rate : 
+
+	The request rate allows you to figure out how many times your model is being called. If it's being called quite frequently, you may want to have a larger cluster.
+
+	* Response time : 
+
+	For example, if your application is getting very long response times and it's doing computer vision, you might need to switch to a GPU inference end point.
+
+	* Failure rate : 
+
+	If your application is failing more than it should (e.g., it has a 20% failure rate) this is something that you may be able to address with an infrastructure change or by using a different model.
+
+	* Exceptions : 
+	You may train a new mode and put it into production, but then find it doesn't fit with the data structure of what your request is expecting—a situation like this will generate an exception, which you can then address.
 
 
 
