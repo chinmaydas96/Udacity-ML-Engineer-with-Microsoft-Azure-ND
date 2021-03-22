@@ -65,9 +65,46 @@ If you're an early adopter, you can use experimental mode, which is for advanced
 
 ---
 
+## Managing Data with the SDK
+
+* The Azure ML SDK allows you to automate your machine learning pipeline, and a key part of this automation is using the SDK to manage data. 
+
+* As we've mentioned, the data preparation step in an ML pipeline often makes up a large proportion (not uncommonly about 80%) of the work, so automating the management of this part of the pipeline can make it dramatically more efficient.
+
+* Earlier we mentioned that a dataset can reference data in a Datastore. In addition, a dataset object can also reference a dataset using public web URLs.
+
+## Interfacing with Datasets
+
+* You can interface with Datasets via the API. How you do so depends in part on the type of Dataset you are using. If you recall from an earlier lesson, there are two Dataset types:
+
+#### FileDataset: 
+
+This is a generic Dataset type. This is useful for things like computer vision or anything where you need to have a lot of flexibility.
+
+#### TabularDataset : 
+
+As the name implies, this type is for tabular (i.e., table-based) data. This type allows you to handle formats like JSON, CSV, or Parquet.
+
+* Here's an example of a typical piece of code for interfacing with a FileDataset:
+
+```Python
+from azureml.core.dataset import Dataset
+
+url_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+
+dataset = Dataset.File.from_files(path=url_paths)
+
+```	
 
 
+ * For example we may want to load the data into a Pandas DataFrame, which we can easily do using the to_pandas_dataframe method:
 
+`df = dataset.to_pandas_dataframe()`
 
 
 
