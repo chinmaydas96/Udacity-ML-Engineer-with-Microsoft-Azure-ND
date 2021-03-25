@@ -106,6 +106,10 @@ dataset = Dataset.File.from_files(path=url_paths)
 
 `df = dataset.to_pandas_dataframe()`
 
+* To install azureml sdk on local machine.
+
+`pip install azureml-sdk -U`
+
 
 
 
