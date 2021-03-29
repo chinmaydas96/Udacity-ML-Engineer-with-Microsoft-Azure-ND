@@ -108,7 +108,154 @@ dataset = Dataset.File.from_files(path=url_paths)
 
 * To install azureml sdk on local machine.
 
-`pip install azureml-sdk -U`
+`pip install pip azureml-sdk -U`
+
+* Check version
+
+```python
+import azureml.core
+print(azureml.core.VERSION)
+```
+
+---
+
+## Create a Virtual Environment and Install IPython
+
+`python -m venv ~/.azure-ml-sdk`
+`source ~/.azure-ml-sdk/bin/activate && pip install ipython pip -U`
+
+### Installing and Using the SDK with a Makefile
+
+* One of our main goals in using the Azure ML SDK is to add automation to our Python projects. One way we can do that is to use the SDK is to create an installation step with a Makefile and incorporate the Azure ML SDK with your Continuous Integration workflow.
+
+* A Makefile can include a command to install and upgrade packages in a requirements.txt file. Here's an example in Azure Cloud Shell:
+
+```
+(.azure-ml-sdk) udacity@Azure:~/azure-ml-sdk$ cat Makefile
+install:
+        pip install --upgrade pip &&\
+                pip install --upgrade -r requirements.txt
+```
+
+The requirements.txt file will look like this:
+
+```
+(.azure-ml-sdk) udacity@Azure:~/azure-ml-sdk$ cat requirements.txt
+ipython
+azureml-sdk
+```
+
+* And then, to install, you can simply run `make install` in the shell.
+
+---
+
+## Creating a Pipeline with the SDK
+
+
+#### Data Preparation
+
+```python
+ws = Workspace.from_config() 
+blob_store = Datastore(ws, "workspaceblobstore")
+compute_target = ws.compute_targets["STANDARD_NC6"]
+experiment = Experiment(ws, 'MyExperiment') 
+
+input_data = Dataset.File.from_files(
+    DataPath(datastore, '20newsgroups/20news.pkl'))
+
+```
+
+---
+
+#### Training Configuration
+
+```python
+
+output_data = PipelineData("output_data", datastore=blob_store)
+
+input_named = input_data.as_named_input('input')
+
+steps = [ PythonScriptStep(
+    script_name="train.py",
+    arguments=["--input", input_named.as_download(),
+        "--output", output_data],
+    inputs=[input_data],
+    outputs=[output_data],
+    compute_target=compute_target,
+    source_directory="myfolder"
+) ]
+
+pipeline = Pipeline(workspace=ws, steps=steps)
+
+```
+
+---
+
+
+#### Training Validation
+
+```python
+pipeline_run = experiment.submit(pipeline)
+pipeline_run.wait_for_completion()
+```
+
+
+---
+
+## Managing Experiments with the SDK
+
+
+* Earlier, you learned how to use the Designer to view the results of your previous runs. If we manage our experiments with the SDK, then we can also access this same data—but in a way that gives us greater control and increased functionality. 
+
+* This involves two main tasks: 
+	* Listing past experiments  
+	* submitting new experiments.
+
+#### 1. Listing Past Experiments
+
+To do this, we need to pass in a workspace object, and then list the collection of trials. This will give us data very similar to the list we've accessed previously using the Designer. Here's the example code we looked at:
+
+```python
+from azureml.core.experiment import Experiment
+
+# First, we pass in the workspace object `ws` to the `list` method
+# and it returns a Python list of `Experiment` objects.  
+list_experiments = Experiment.list(ws)
+
+# If we print the contents of the variable,
+# we can see the list of all the experiments
+# that have been run in that workspace.
+print(list_experiments)
+
+[Experiment(Name: dataset_profile,
+ Workspace: Azure-ML-Workspace), Experiment(Name: binary-classification,
+ Workspace: Azure-ML-Workspace), Experiment(Name: regression,
+ Workspace: Azure-ML-Workspace), Experiment(Name: sfautoml]
+
+```
+
+
+
+#### 2. Submitting New Experiments
+
+* To submit a new experiment (such as if we wanted to try a different model type or a different algorithm), we would again pass in a workspace object and then submit the experiment. Here's the example code:
+
+```python
+from azureml.core.experiment import Experiment
+
+experiment = Experiment(ws, "automl_test_experiment")
+run = experiment.submit(config=automl_config, show_output=True)
+
+```
+
+---
+
+
+
+
+
+
+
 
 
 
