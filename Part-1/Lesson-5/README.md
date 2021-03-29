@@ -251,29 +251,21 @@ run = experiment.submit(config=automl_config, show_output=True)
 ---
 
 
+## Edge Cases: SDK Versioning
+
+* One potential issue or "gotcha" that can come up when you're using tools like Jupyter Notebooks or the Azure Cloud Shell is that you may not really know what versions your code is using. Things may run fine for a while and then suddenly stop working because of an issue with the version of one of the libraries being used by your code.
 
 
+* One way you can address this problem is by pinning your dependencies so that your code always uses a specific known version. For example:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* Jupyter notebooks can do this by using a pip package that has a specific version
+Azure Cloud Shell can do this by using a requirements file
+For example, here's what that might look like in a requirements.txt file for a Python project:
+`
+Flask==1.0.2
+pandas==0.24.2
+scikit-learn==0.20.3
+pylint
+`
 
 ---
-![1](screen1.png)
