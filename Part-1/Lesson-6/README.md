@@ -93,3 +93,66 @@ print('\n learning rate:',parameter_values[3])
 print('\n keep probability:',parameter_values[5])
 print('\n batch size:',parameter_values[7])
 ```
+
+---
+
+## Introducing Automated Machine Learning - 
+
+* In this lesson, we'll get into Automated Machine Learning (which we will sometimes refer to as AutoML). We'll start by first considering some of the issues that come up in traditional machine learning, so that was can then discuss how automated machine learning addresses these issues.
+
+### Traditional ML
+To understand why Automated ML is a useful tool, it helps to first understand some of the challenges we face with traditional ML. These include:
+
+
+#### Focus on technical details vs the business problem : 
+
+* The code and technical details can consume large amounts of the available resources, distracting our focus from the business problem we want to use the ML to solve.
+
+#### Lack of automation : 
+
+* With traditional ML, we have to do many things manually, even though they could easily be automated with tools like Azure ML Studio.
+
+
+#### Too much HiPPO influence : 
+
+* The Highest Paid Person's Opinion (HiPPO) can have an unduly large influence on decisions about the output of the model, even though this decision might be better made automatically.
+
+#### Feature engineering : 
+
+* What are the features that I need to get the best accuracy? What are the columns I should select? This can be a huge task that requires a lot of human effort.
+
+#### Hyperparameter selection : 
+
+* For example, with a clustering model, what number of clusters will give the best results? There can be a lot of trial and error and many false starts.
+
+#### Training and Tuning : 
+
+* What are the different parameters you're using when training your model? What machines and resources should you use? How should you best tune the parameters? In traditional ML, these questions require a human to supervise the process.
+
+--- 
+
+### Automated ML
+
+* Automated ML can help with all of the above problems. Essentially, AutoML involves the application of DevOps principles to machine learning, in order to automate all aspects of the process. 
+
+* For example, we can automate feature engineering, hyperparameter selection, model training, and tuning. With AutoML, we can:
+
+	* Create hundreds of models a day
+	* Get better model accuracy
+	* Deploy models faster
+
+
+* This creates a quicker feedback loop and allows us to bring ideas to market much sooner. Overall, it reduces the time that we have to spend on technical details, allowing for more effort to be put into solving the underlying business problems.
+
+
+---
+
+
+
+
+
+
+
+
+
+
