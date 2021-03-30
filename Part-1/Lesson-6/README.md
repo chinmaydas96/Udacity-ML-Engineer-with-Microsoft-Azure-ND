@@ -147,6 +147,124 @@ To understand why Automated ML is a useful tool, it helps to first understand so
 
 ---
 
+# AutoML and the SDK
+
+## Configuring AutoML from the SDK :
+
+* We can easily leverage AutoML from the SDK to automate many aspects of our pipeline, including:
+
+	* Task type
+
+	* Algorithm iterations
+
+	* Accuracy metric to optimize
+
+	* Algorithms to blacklist/whitelist
+
+	* Number of cross-validations
+
+	* Compute targets
+
+	* Training data
+
+* To do this, we first use the AutoMLConfig class. In the code example below, you can see that we are creating an automl_config object and setting many of the parameters listed above:
+
+```python
+from azureml.train.automl import AutoMLConfig
+
+automl_config = AutoMLConfig(task="classification",
+                             X=your_training_features,
+                             y=your_training_labels,
+                             iterations=30,
+                             iteration_timeout_minutes=5,
+                             primary_metric="AUC_weighted",
+                             n_cross_validations=5
+                            )
+```
+
+### Running AutoML from the SDK
+
+* Once we have completed our configuration, we can then run it using the SDK. Here's a typical example of what that would look like:
+
+```python
+from azureml.core.experiment import Experiment
+
+experiment = Experiment(ws, "automl_test_experiment")
+run = experiment.submit(config=automl_config, show_output=True)
+```
+
+---
+
+## Model Interpretation in Azure ML
+
+* The Azure ML platform has some core tools that make it easy to understand model behavior by looking at a previously run experiment. For example, we can easily get visualizations that help us interpret why a model is making the prediction it is making, or identify and select for the best features.
+
+---
+
+## Exporting Models with ONNX
+
+* The Open Neural Network Exchange (ONNX) is an open-sources portability platform for models that allows you to convert models from one framework to another, or even to deploy models to a device (such as an iOS or Android mobile device).
+
+### Getting Models
+* To get models with ONNX, there are several options. You can:
+
+	* Train the model in Azure ML
+	* Convert an existing model
+	* Get a pre-trained ONNX model
+	* Create an ONNX model from an AutoML service, such as Azure Custom Vision service
+
+
+### Using the Runtime
+
+* Installation can be done with a simple pip install, for either CPU or GPU builds:
+
+```
+pip install onnxruntime       # CPU build
+pip install onnxruntime-gpu   # GPU build
+```
+
+* Then we can simply import the runtime and then instantiate an InferenceSession object, passing in the path to the model:
+
+``` Python
+import onnxruntime
+session = onnxruntime.InferenceSession("path to model")
+```
+
+### Practicing with ONNX
+
+* We'll walk through some of the basics of using ONNX. You'll find a notebook below that you can use to follow along and try it for yourself.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
