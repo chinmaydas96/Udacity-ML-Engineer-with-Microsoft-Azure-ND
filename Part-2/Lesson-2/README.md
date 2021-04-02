@@ -196,8 +196,43 @@ Both ACI and AKS are available in the Azure ML platform as deployment options fo
 * Constant Evaluation: A feedback loop that is necessary to detect potential issues
 
 
+---
+
+## Enable Application Insights
+
+![](screen13.png)	
+
+* We discussed Application Insights that is a very useful tool to detect anomalies, visualize performance. 
+
+* It can be enabled before or after a deployment. 
+
+* To enable Application Insights after a model is deployed, you can use the below command with the python SDK. 
+
+`
+# enable application insight
+service.update(enable_app_insights=True)
+`
+
+![](screen14.png)	
+
+---
+
+#### New terms
+
+* Logging: Informational output produced by the software, usually in the form of text
+
+* Application Insights: A special Azure service which provides key facts about an application
+
+* Webservice: One of the most used Python classes from Azure's Python SDK
 
 
+#### Further reading
+
+* Azure's documentation has a whole section on monitoring and collecting data with Application Insights
+
+* https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-app-insights
+
+---
 
 
 
