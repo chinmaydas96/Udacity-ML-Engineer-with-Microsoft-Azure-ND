@@ -259,6 +259,8 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration(port=9001)
 # Deploy the service
 service = Model.deploy(ws, "local-service", [model], inference_config, deployment_config)
+print(service.run(input_data=json_data))
+
 
 service.reload()
 print(service.run(input_data=json_data))
@@ -277,20 +279,113 @@ print(service.run(input_data=json_data))
 
 * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-troubleshoot-deployment
 
+## Troubleshoot Deployment Issues
+
+* There are multiple things you can expect to go wrong. When you submit HTTP requests to a deployed model, there are three HTTP codes that you may encounter:
+
+	* HTTP STATUS 502: After a deployment, the application crashes because of an unhandled exception.
+
+	* HTTP STATUS 503: When there are large spikes in requests, the system may not be able to cope with all of them and some clients may see this code.
+
+	* HTTP STATUS 504: The request timed out. In Azure, the requests time out after 1 minute. If the score.py script is taking longer than a minute, this error code will be produced.
+
+* When an error code shows up, one thing you can do is retrieving the logs output. Logs output is always useful to debug problems in deployed containers. Showing below is an extract of what you should see in a successful response to a scoring request.
+
+```
+Validation Request Content-Type
+Received input: {'data': [{'instant': 1, 'date': '2011-01-01 00:00:00,000000', 'season': 1, 'yr': 0, 'mnth': 1, 'weekday': 6, 'weathersit': 2, 'temp': 0.344167, 'atemp': 0.363625, 'hum': 0.805833, 'windspeed': 0.160446, 'casual': 331, 'registered': 654 }]}
+Headers passed in (total 12):
+    Host: localhost:5001
+    X-Real-Ip: 127.0.0.1
+    X-Forwarded-For: 127.0.0.1
+    X-Forwarded-Proto: http
+    Connection: close
+    Content-Length: 812
+    User-Agent: ApacheBench/2.3
+    Accept: */*
+    Authorization: Bearer q8szMDbCoNlxDZCpiGI8tnqaxtC1yDiy
+    Content-Type: application/json
+    X-Ms-Request-Id: 7cb6f8b9-e511-43b7-982f-e413d6e3239d
+    Accept-Encoding: gzip
+Scoring Timer is set to 60.0 seconds
+200
+```
+
+---
+
+## Key Benefits of Compute Instances
+
+* Compute Instances are a managed, cloud-based workstation. It can be used in Azure Machine Learning Studio. This is a great way to take advantage of preloaded machine dependencies and not being responsible for their management.
+
+#### New terms
+
+* Compute Instance: A distinct type of a compute offering from Azure
+
+* Cloud-based workstation: Sometimes, compute instances are referred to as a cloud-based workstation because it is ready to start developing
+
+#### Further reading
+
+* Azure's documentation on "What is a compute instance" defines some other key features of their offering.
+
+* https://docs.microsoft.com/en-us/azure/machine-learning/concept-compute-instance
 
 
+---
+
+## Glossary
+
+* ACI: Azure Container Instance
+
+* AKS: Azure Kubernetes Service
+
+* Application Insights: A special Azure service which provides key facts about an application
+
+* CI/CD: Continuous Integration and Continuous Delivery platform. Jenkins, CircleCI, and Github Actions, are a few examples
+
+* Cloud-based workstation: Sometimes, compute instances are referred to as a cloud-based workstation, because it is ready to start developing
+
+* Compute Instance: A distinct type of a compute offering from Azure
+
+* DevOps: A set of best practices that helps provide continuous delivery of software at the highest quality with a constant feedback loop
+
+* Deployment: A way to deliver work into production
+
+* Endpoint: A part of an HTTP API. Either a full URL or a partial URL identifying a part
+
+* HTTP API: A URL that exposes logic to interact with software, in this case, a trained model
+
+* HTTP Status code: A number that represents a status when an HTTP server responds. Error conditions in the server side start at 500
+
+* Logging: Informational output produced by software, usually in the form of text
+
+* Shipping into production: The most important aspect of a Machine Learning specialist
+
+* Webservice: One of the most used Python classes from Azure's Python SDK
 
 
+---
 
+## Further Reading
 
+These are some interesting links related to DevOps, CI/CD, and configuration in Azure ML Studio:
 
+* Chapter 7 of Python For DevOps has an excellent section about logging and troubleshooting
 
+* Both the Jenkins and Github Actions websites have good information about their CI/CD platforms and why they are compelling
 
+* Azure's tutorial for how to setup authentication goes into some key details of the deployment configuration
+(https://docs.microsoft.com/en-us/azure/machine-learning/how-to-setup-authentication)
 
+* Azure's documentation has a whole section on monitoring and collecting data with Application Insights
+(https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-app-insights)
 
+* The troubleshoot deployment of models section of Azure's documentation covers some of these troubleshooting concepts in detail
+(https://docs.microsoft.com/en-us/azure/machine-learning/how-to-troubleshoot-deployment)
 
+* Azure's documentation on "What is a compute instance" defines some other key features of their offering
+(https://docs.microsoft.com/en-us/azure/machine-learning/concept-compute-instance)
 
-
+---
 
 
 
