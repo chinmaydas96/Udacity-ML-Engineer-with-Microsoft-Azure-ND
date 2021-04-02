@@ -234,6 +234,50 @@ service.update(enable_app_insights=True)
 
 ---
 
+## Troubleshoot Deployment Issues
+
+* We covered different techniques and diagnosis that you can use to identify potential issues like unhandled exceptions from a deployed service. 
+
+* Using local deployment is a special technique, which makes it easier to identify some of these potential issues.
+
+### Common HTTP errors:
+
+* 502: the application crashes because of an unhandled exception.
+
+* 503: there are large spikes in requests and the system is not able to cope with all of them.
+
+* 504: request timed out.
+
+
+### Deploy Locally
+
+* To deploy locally using the Python SDK you will need to use the LocalWebService class and configure it for a local deployment
+
+```python
+from azureml.core.webservice import LocalWebservice
+
+deployment_config = LocalWebservice.deploy_configuration(port=9001)
+# Deploy the service
+service = Model.deploy(ws, "local-service", [model], inference_config, deployment_config)
+
+service.reload()
+print(service.run(input_data=json_data))
+```
+
+
+* Deploying locally has some benefits. First, it is easier and faster to verify unhandled exceptions from the scoring script since you don't have to wait for deployment in Azure. Also, many people or teams can debug at the same time.
+
+#### New terms
+
+* HTTP Status code: A number that represents a status when an HTTP server responds. Error conditions in the server side start at 500
+
+#### Further reading
+
+* The troubleshoot deployment of models section of Azure's documentation covers some of these troubleshooting concepts in detail.
+
+* https://docs.microsoft.com/en-us/azure/machine-learning/how-to-troubleshoot-deployment
+
+
 
 
 
