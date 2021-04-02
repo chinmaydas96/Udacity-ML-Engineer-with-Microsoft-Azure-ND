@@ -138,8 +138,62 @@
 * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-consume-web-service
 
 
+---
+
+## Consume Deployed Service
+
+* To interact with the endpoint, the provided endpoint.py script has everything you need, except for the full URL to the endpoint and the key to authenticate. 
+
+* It is crucial to make the update to the correct URL and authentication key, otherwise, the script will not be able to produce log output.
+
+* The authentication is passed in the request as part of the headers, as shown in this snippet:
+
+```python
+# Set the content type
+headers = {"Content-Type": "application/json"}
+
+# If authentication is enabled, set the authorization header
+headers["Authorization"] = f"Bearer {key}"
+```
 
 
+* After deployment of a model, the next big item is consuming service to retrieve data. If there is anything incorrect in the deployed model, consuming the data from the service would allow identifying problems. 
+
+* It is also a great way to validate (test) outputs are working as expected.
+
+---
+
+## Benchmark the Endpoint
+
+* A benchmark is used to create a baseline or acceptable performance measure. Benchmarking HTTP APIs is used to find the average response time for a deployed model.
+
+* One of the most significant metrics is the response time since Azure will timeout if the response times are longer than sixty seconds.
+
+![](screen5.png)	
+
+---
+
+![](screen6.png)	
+
+* Apache Benchmark is an easy and popular tool for benchmarking HTTP services. You will learn about it on the next page.
+
+---
+
+![](screen7.png)	
+---
+
+#### New terms
+
+* Response Time: The time in seconds (or milliseconds) that service takes to produce a response
+
+* Timeout: When a request is sent, this is an error when the server cannot produce a response in a given amount of time
+
+
+#### Further reading
+
+* The documentation website for the Apache Benchmark Tool goes deep into all the options needed to benchmark almost any URL.
+
+* https://httpd.apache.org/docs/2.4/programs/ab.html
 
 
 
