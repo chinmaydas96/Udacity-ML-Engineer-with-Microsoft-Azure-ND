@@ -196,13 +196,69 @@ headers["Authorization"] = f"Bearer {key}"
 * https://httpd.apache.org/docs/2.4/programs/ab.html
 
 
+---
+
+## Benchmark the Endpoint
+
+* Benchmarking services is an interesting topic. Everyone likes to have a highly performant endpoint, but the answer to what it takes to have a performant endpoint varies. 
+
+* It is useful to create a baseline for benchmarks so that comparing subsequent results is meaningful.
+
+* The benchmark.sh script doesn't have much code at all in it. It does include the ab command that runs against the selected endpoint using the data.json file created by the same endpoint.py file you used in the previous exercise. The ab command looks like this:
+
+`ab -n 10 -v 4 -p data.json -T 'application/json' -H 'Authorization: Bearer SECRET' http://URL.azurecontainer.io/score`
 
 
+* After running the benchmark.sh or simply after running the above command, you will see the output of requests sent to and responses from the endpoint, and at the end, a summary with key information to determine response performance.
+
+* In this exercise use the Apache Benchmark command-line tool (ab) to generate lots of HTTP POST requests to get performance metrics out of the Azure Container Instance.
+
+Make sure you have the Apache Benchmark command-line tool installed and available in your path:
+
+`$ which ab
+/usr/bin/ab
+`
+
+`$ ab --help
+Usage: ab [options] [http[s]://]hostname[:port]/path
+Options are:
+...
+`
+
+---
+
+## Curating Data Input
+
+* There are some key items to ensure when sending data to a deployed endpoint. 
+
+* ou need to make sure that the keys and values are following the constraints. 
+
+* For example, if one field is repeated, this could potentially cause an error response, or if the format needs a date and time as a string, rather than an integer.
+
+* Remember, using values that the service doesn't expect would produce an error response.
 
 
+---
 
+#### Glossary
 
+* Benchmarking: being able to create a baseline of acceptable performance so that it can be compared to day-to-day behavior
 
+* GET request method: GET is a request method supported by HTTP. This method should only be used to retrieve data from a web server
+
+* JSON: JavaScript Object Notation, also referred to as a "bridge language" used to make communication possible between two groups who do not share a native dialect
+
+* POST request method: POST is a request method supported by HTTP. This method requests that a web server accepts the data enclosed in the body of the request message
+
+* RESTful: A style for building HTTP endpoints that emphasizes separation of concerns
+
+* Response Time: The time in seconds (or milliseconds) that service takes to produce a response
+
+* Swagger: A tool that eases the documentation efforts of HTTP APIs
+
+* Timeout: When a request is sent, this is an error when the server cannot produce a response in a given amount of time
+
+---
 
 
 
