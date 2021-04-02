@@ -23,3 +23,155 @@
 
 ---
 
+## Creating a Benchmark
+
+* you will interact with a deployed service and create a benchmark. 
+
+* Interacting and creating a benchmark is critical for enhancing performance and detecting anomalies.
+
+#### Further reading
+
+* Chapter 4 of Python For DevOps covers benchmarking and other useful Linux utilities that can be useful.
+
+---
+
+## Swagger Documentation
+
+* Swagger is a tool that helps build, document, and consume RESTful web services like the ones you are deploying in Azure ML Studio. 
+
+* It further explains what types of HTTP requests that an API can consume, like POST and GET.
+
+* Azure provides a swagger.json that is used to create a web site that documents the HTTP endpoint for a deployed model.
+
+
+* Swagger example
+
+![](screen2.png)	
+
+---
+
+#### New terms
+
+* RESTful: A style for building HTTP endpoints that emphasizes separation of concerns
+
+#### Further reading
+
+* The Swagger homepage has in-depth examples and usage to dig further into other details.
+
+* https://swagger.io/tools/swagger-ui/
+
+
+---
+
+
+## Swagger Documentation
+
+#### Note: 
+* In the video, the instructor used localhoston port 80 to display the Swagger page. It may not work for everyone. 
+
+* If localhost doesn't work for you, check if you can use a different port other than 80, for example, port 9000. 
+
+* Ensure that the updated port is used when trying to reach the swagger instance by localhost, for example localhost:9000.
+
+* If you see code 400, message bad request version in the Python script, it means that you are using https instead of http in the Swagger page. Remember to use http only when accessing these URLs.
+
+
+* In the Swagger.sh file, it has a command line:
+
+`docker run -p 80:8080 swaggerapi/swagger-ui`
+
+* This command runs the swagger UI container and makes it available on port 80. This will need to be updated in the lab because port 80 is being used already. Set the port to 9000 would be a good choice here. So the updated command will look like this:
+
+`docker run -p 9000:8080 swaggerapi/swagger-ui`
+
+
+* After the Swagger UI container is running, you can access the website on `http://localhost:9000`.
+
+* Running serve.py is crucial so that the contents of swagger.json can be consumed locally by Swagger. If swagger.json is not present, or if the local server is not running, then Swagger will not be able to produce the docs.
+
+* To give you more information: running serve.py is needed because Azure protects against CORS (Cross Origin Resource Sharing) and the server that hosts swagger.json needs to be allowed to happen. This is done in the script with the following method:
+
+```python
+    def end_headers(self):
+        self.send_header("Access-Control-Allow-Origin", "*")
+        SimpleHTTPRequestHandler.end_headers(self)
+```
+
+#### Note: 
+
+* The above information is not closely related to the course and will not be tested in the final project. 
+
+* It is just for those who are interested in the commands in serve.py.
+
+* By default, the serve.py script will run and serve contents on localhost:8000 - this is an important detail because it is required as input in the Swagger UI page. The value that is required in the Swagger UI is http://localhost:8000/swagger.json. Please notice that you should use http instead of https.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
