@@ -248,10 +248,13 @@ service.update(enable_app_insights=True)
 
 * 504: request timed out.
 
+![](screen15.png)
 
 ### Deploy Locally
 
 * To deploy locally using the Python SDK you will need to use the LocalWebService class and configure it for a local deployment
+
+![](screen16.png)
 
 ```python
 from azureml.core.webservice import LocalWebservice

@@ -105,7 +105,37 @@
 
 * By default, the serve.py script will run and serve contents on localhost:8000 - this is an important detail because it is required as input in the Swagger UI page. The value that is required in the Swagger UI is http://localhost:8000/swagger.json. Please notice that you should use http instead of https.
 
+---
 
+## Consume Deployed Service
+
+* You can consume a deployed service via an HTTP API. An HTTP API is a URL that is exposed over the network so that interaction with a trained model can happen via HTTP requests.
+
+* Users can initiate an input request, usually via an HTTP POST request. HTTP POST is a request method that is used to submit data. The HTTP GET is another commonly used request method. HTTP GET is used to retrieve information from a URL. The allowed requests methods and the different URLs exposed by Azure create a bi-directional flow of information.
+
+![](screen3.png)	
+
+---
+
+* The APIs exposed by Azure ML will use JSON (JavaScript Object Notation) to accept data and submit responses. It served as a bridge language among different environments.
+
+![](screen4.png)	
+
+---
+
+#### New terms
+
+* JSON: JavaScript Object Notation, also referred to as a "bridge language" used to make communication possible between two groups who do not share a native dialect
+
+* GET request method: GET is a request method supported by HTTP. This method should only be used to retrieve data from a web server
+
+* POST request method: POST is a request method supported by HTTP. This method requests that a web server accepts the data enclosed in the body of the request message
+
+#### Further reading
+
+* The "How to consume a web service" Azure documentation has good examples of further interactions with an endpoint.
+
+* https://docs.microsoft.com/en-us/azure/machine-learning/how-to-consume-web-service
 
 
 
