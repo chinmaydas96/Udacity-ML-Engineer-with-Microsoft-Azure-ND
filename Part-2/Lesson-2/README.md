@@ -177,7 +177,19 @@ Both ACI and AKS are available in the Azure ML platform as deployment options fo
 ---
 
 
+## Deploy an Azure Machine Learning model
 
+* The primary task as a Machine Learning engineer is to ship models into production. Constant evaluation allows identifying potential issues and creating a baseline so that adapting or updating is possible.
+
+* Some key steps to deploy a model are:
+
+	* A previously trained model
+	* Complete the deployment form
+	* Enable authentication
+	* Select or create a new compute cluster
+
+#### New terms
+* Constant Evaluation: A feedback loop that is necessary to detect potential issues
 
 
 
