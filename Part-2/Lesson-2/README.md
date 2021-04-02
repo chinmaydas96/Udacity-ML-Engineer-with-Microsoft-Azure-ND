@@ -62,10 +62,12 @@
 	* Azure Container Instances service disabled by default
 
 * Token- based
+
 	* Azure Kubernetes service disabled by default
 	* Not support Azure Container Instances
 
 * Interactive
+
 	* Used by local deployment and experimentation (e.g. using Jupyter notebook)
 
 ---
@@ -79,17 +81,100 @@
 ---
 
 ### Service Principal
-A “Service Principal” is a user role with controlled permissions to access specific resources. Using a service principal is a great way to allow authentication while reducing the scope of permissions, which enhances security.
 
-New terms
-CI/CD: Continuous Integration and Continuous Delivery platform. Jenkins, CircleCI, and Github Actions are a few examples.
+* A “Service Principal” is a user role with controlled permissions to access specific resources. Using a service principal is a great way to allow authentication while reducing the scope of permissions, which enhances security.
 
 
+#### CI/CD : 
+	
+	* Continuous Integration and Continuous Delivery platform. Jenkins, CircleCI, and Github Actions are a few examples.
+
+	* Further reading: 
+		
+		* Both the Jenkins and Github Actions websites have good information about their CI/CD platforms and why they are compelling the CI/CD platform.
+
+		* https://www.jenkins.io/
+
+		* https://github.com/features/actions
+
+
+---
+
+## Implementing Enable Security and Authentication
+
+
+* In this demo, the Service Principal gets enabled and the many steps of getting to create one are performed successfully.
+
+
+* Install azure cli packages in terminal 
+
+`pip install azure-cli `
 
 
 
+### Several steps are needed to create the Service Principal: 
+
+![](screen7.png)
+
+* Ensure the az command-line tool is installed along with the ml extension
+
+	* The Azure Machine Learning extension allows you to interact with Azure Machine Learning Studio, part of the az command. Ensure it is installed with the following command: `az extension add -n azure-cli-ml`
 
 
+* Create the Service Principal with az after login in
+
+	`az ad sp create-for-rbac --sdk-auth --name ml-auth`
+
+* Capture the "objectId" using the clientID:
+
+	`az ad sp show --id xxxxxxxx-3af0-4065-8e14-xxxxxxxxxxxx`
+
+* Assign the role to the new Service Principal for the given Workspace, Resource Group and User objectId
+
+	`az ml workspace share -w Demo -g demo --user xxxxxxxx-cbdb-4cfd-089f-xxxxxxxxxxxx --role owner`
+
+* workspace and group can be found at machine learning studio or at the config.json file.
+
+![](screen9.png)
+
+
+* Exercise: Create a Service Principal Authentication method
+In this exercise, you will create a Service Principal which is a good way to authenticate to Azure ML services.
+
+* Now create the Service Principal (SP). Remember you can use whatever name you want, although in the examples used ml-auth.
+
+* Note: you won't be able to create a Service Principal if you are using the lab provided to you, an error like this ValidationError: Insufficient privileges to complete the operation will appear. It is because you are not authorized to create a Service Principal on the Udaicty account. But this will not be a blocker for other exercises in the course. There should not be any issues if you are using your own account. We still encourage you to follow the demo and type in the command and see the information and output come from Azure.
+
+
+--- 
+
+## Configure Deployment Settings
+
+* Deployment is about delivering a trained model into production so that it can be consumed by others. Configuring deployment settings means making choices on cluster settings and other types of interaction with a deployment. Having a good grasp on configuring production environments in Azure ML Studio and the Python SDK is the key to get robust deployments.
+
+* ACI and AKS
+Both ACI and AKS are available in the Azure ML platform as deployment options for models.
+
+* ACI is a container offering from Azure, which uses container technology to quickly deploy compute instances. The flexibility of ACI is reduced as to what AKS offers, but it is far simpler to use.
+
+* AKS, on the other hand, is a Kubernetes offering. The Kubernetes service is a cluster that can expand and contract given on demand, and it does take more effort than the container instance to configure and setup.
+
+#### New terms
+
+* ACI: Azure Container Instance
+
+* AKS: Azure Kubernetes Service
+
+* Deployment: A way to deliver work into production
+
+* Concurrent Operations: Also referred to as "concurrency", it is the number of operations to run at the same time
+
+
+---
+
+![](screen10.png)
+
+---
 
 
 
