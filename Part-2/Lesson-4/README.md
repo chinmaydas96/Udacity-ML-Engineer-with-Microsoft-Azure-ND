@@ -244,8 +244,21 @@ pipeline = Pipeline(workspace=ws, steps=[parallerun_step])
 
 
 
+---
+
+## Pipelines - Different Tasks
+
+* Pipelines can perform several other tasks aside from training a model. Some of these tasks, or steps are:
+
+	* Data Preparation
+	* Validation
+	* Deployment
+	* Combined tasks
+
+![](screen8.png)
 
 
+---
 
 
 
