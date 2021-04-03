@@ -215,7 +215,30 @@ pipeline = Pipeline(workspace=ws, steps=[parallerun_step])
 
 * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-your-first-pipeline
 
+---
 
+
+## Consume Pipeline Endpoint (API)
+
+* Pipeline endpoints can be consumed via HTTP, but it is also possible to do so via the Python SDK. Since there are different ways to interact with published Pipelines, this makes the whole pipeline environment very flexible.
+
+* It is key to find and use the correct HTTP endpoint to interact with a published pipeline. Sending a request over HTTP to a pipeline endpoint will require authentication in the request headers. We will talk more about it later.
+
+
+![](screen7.png)
+
+#### New terms
+
+* Pipeline endpoint: The URL of the published Pipeline
+
+* HTTP Headers: Part of the HTTP specification, where a request can attach extra information, like authentication
+
+
+#### Further reading
+
+* The documentation on the Pipeline Endpoint class has some good information about methods that allow interacting with a pipeline.
+
+* https://docs.microsoft.com/en-us/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py
 
 
 
